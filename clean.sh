@@ -1,6 +1,7 @@
 rm -rf rootfs/bin/*
 rm -rf iso/boot/rootfs.xz
 rm -rf ingolna.iso
+rm -rf rootfs/init
 
 touch rootfs/bin/.keep
 touch rootfs/dev/.keep
