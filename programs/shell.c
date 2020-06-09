@@ -17,7 +17,6 @@ int execute(char** args);
 
 int main(int argc, char* argv[]) {
     main_loop();
-
     return 0;
 }
 
@@ -169,8 +168,24 @@ int shell_help(char** args) {
     printf("available programs:\n");
 
     for (int i = 0; i < num_builtins(); i++) {
-        printf("  %s\n", builtin_str[i]);
+        printf("%s  ", builtin_str[i]);
     }
+
+    struct dirent* de;
+    DIR* dr = opendir("/bin");
+
+    if (dr == NULL) {
+        fprintf(stderr, "Could not open /bin directory\n");
+        return 1;
+    }
+
+    while ((de = readdir(dr)) != NULL) {
+        if (strcmp(de->d_name, ".") != 0 && strcmp(de->d_name, "..") != 0) {
+            printf("%s  ", de->d_name);
+        }
+    }
+
+    printf("\n");
 
     return 1;
 }
