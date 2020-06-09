@@ -13,19 +13,19 @@ void mount_core_fss();
 void main() {
     mount_core_fss();
 
-    static char* argv_welcome[] = {"welcome", NULL};
-    exec("/bin/welcome", argv_welcome);
+    static char* args_welcome[] = {"welcome", NULL};
+    exec("/bin/welcome", args_welcome);
     
-    static char* argv_shell[] = {"shell", NULL};
-    exec("/bin/shell", argv_shell);
+    static char* args_shell[] = {"shell", NULL};
+    exec("/bin/shell", args_shell);
 
     while(1);
 }
 
-void exec(char* cmd, char* argv[]) {
+void exec(char* cmd, char* args[]) {
     pid_t pid = fork();
     if (pid == 0) {
-        execv(cmd, argv);
+        execv(cmd, args);
     }
     else {
         waitpid(pid, 0, 0);
