@@ -4,6 +4,7 @@
 #include <sys/wait.h>
 #include <unistd.h>
 #include <dirent.h>
+#include <linux/limits.h>
 
 #define BUFFSIZE 1024
 
@@ -15,7 +16,7 @@ char* read_line();
 char** split_line(char* line);
 int execute(char** args);
 
-int main(int argc, char* argv[]) {
+int main(int argc, char** argv) {
     main_loop();
     return 0;
 }
@@ -26,6 +27,11 @@ void main_loop() {
     int status;
 
     do {
+        char cwd[PATH_MAX];
+        if (getcwd(cwd, sizeof(cwd)) != NULL) {
+            printf(cwd);
+        }
+
         printf("> ");
         line = read_line();
         args = split_line(line);
