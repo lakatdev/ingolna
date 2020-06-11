@@ -297,7 +297,7 @@ char* RUBY_HL_keywords[] = {
 char* KESZEG_HL_keywords[] = {
     "set", "if", "add", "array", "sub", "mul", "div", "print", "input", "mod", "end",
     "arrset", "arrget", "inc", "dec", "jump", "free", "exec", "while", 
-    "num", "ascii", "string", "less", "more", "equals", "lessequals", "moreequals", NULL
+    "num|", "ascii|", "string|", "less|", "more|", "equals|", "lessequals|", "moreequals|", NULL
 };
 
 struct editor_syntax HL_DB[] = {
