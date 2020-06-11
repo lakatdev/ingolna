@@ -12,7 +12,7 @@ int main(int argc, char** argv) {
         fclose(fptr);
     }
 
-    printf("Build 2020.06.11\n");
+    printf("Build 2020.06.12\n");
 
     return 0;
 }
