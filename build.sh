@@ -24,4 +24,4 @@ cd ..
 cp rootfs.cpio.xz iso/boot/rootfs.xz
 rm rootfs.cpio.xz
 cd iso
-xorriso -as mkisofs -isohybrid-mbr ../../raw/isohdpfx.bin -c boot/syslinux/boot.cat -b boot/syslinux/isolinux.bin -no-emul-boot -boot-load-size 4 -boot-info-table -o ../ingolna.iso ../iso/
+xorriso -as mkisofs -isohybrid-mbr ../isohdpfx.bin -c boot/syslinux/boot.cat -b boot/syslinux/isolinux.bin -no-emul-boot -boot-load-size 4 -boot-info-table -o ../ingolna.iso ../iso/
