@@ -134,23 +134,29 @@ int launch(char** args) {
 
 //BUILTIN PROGRAMS START
 
+/*
+    Sort builtin programs alphabetically
+*/
 int shell_cd(char** args);
+int shell_clear(char** args);
+int shell_exit(char** args);
 int shell_help(char** args);
 int shell_ls(char** args);
-int shell_exit(char** args);
 
 char* builtin_str[] = {
     "cd",
+    "clear",
+    "exit",
     "help",
-    "ls",
-    "exit"
+    "ls"
 };
 
 int (*builtin_func[]) (char**) = {
     &shell_cd,
+    &shell_clear,
+    &shell_exit,
     &shell_help,
-    &shell_ls,
-    &shell_exit
+    &shell_ls
 };
 
 int num_builtins() {
@@ -169,13 +175,24 @@ int shell_cd(char** args) {
     return 1;
 }
 
+int shell_clear(char** args) {
+    write(1, "\33[H\33[2J", 7);
+    return 1;
+}
+
+int shell_exit(char** args) {
+    return 0;
+}
+
 int shell_help(char** args) {
     printf("Ingolna Shell\n");
-    printf("available programs:\n");
+    printf("Shell programs:\n");
 
     for (int i = 0; i < num_builtins(); i++) {
         printf("%s  ", builtin_str[i]);
     }
+
+    printf("\nInstalled programs:\n");
 
     struct dirent* de;
     DIR* dr = opendir("/bin");
@@ -213,10 +230,6 @@ int shell_ls(char** args) {
     closedir(dr);
 
     return 1;
-}
-
-int shell_exit(char** args) {
-    return 0;
 }
 
 //BUILTIN PROGRAMS END
