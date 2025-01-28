@@ -17,7 +17,7 @@ void main() {
 
     static char* args_welcome[] = {"welcome", NULL};
     exec("/bin/welcome", args_welcome);
-    
+
     static char* args_shell[] = {"shell", NULL};
     exec("/bin/shell", args_shell);
 
@@ -77,7 +77,7 @@ void mount_core_fss() {
 
 void setup_jvm() {
     printf("Setting up JVM...\n");
-    char *java_home = "/j";
+    char *java_home = "/";
     setenv("JAVA_HOME", java_home, 1);
 
     char *current_path = getenv("PATH");

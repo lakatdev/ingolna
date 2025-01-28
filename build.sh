@@ -1,8 +1,6 @@
 gcc -static init.c -o rootfs/init
 
-rm -rf rootfs/bin/.keep
 rm -rf rootfs/dev/.keep
-rm -rf rootfs/lib/.keep
 rm -rf rootfs/mnt/.keep
 rm -rf rootfs/proc/.keep
 rm -rf rootfs/root/.keep
