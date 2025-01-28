@@ -9,9 +9,11 @@
 
 void exec();
 void mount_core_fss();
+void setup_jvm();
 
 void main() {
     mount_core_fss();
+    setup_jvm();
 
     static char* args_welcome[] = {"welcome", NULL};
     exec("/bin/welcome", args_welcome);
@@ -71,4 +73,19 @@ void mount_core_fss() {
     else {
         printf("error mounting devpts\n");
     }
+}
+
+void setup_jvm() {
+    printf("Setting up JVM...\n");
+    char *java_home = "/j";
+    setenv("JAVA_HOME", java_home, 1);
+
+    char *current_path = getenv("PATH");
+    if (current_path == NULL) {
+        current_path = "";
+    }
+    char new_path[1024];
+    snprintf(new_path, sizeof(new_path), "%s:%s/bin", current_path, java_home);
+    setenv("PATH", new_path, 1);
+
 }

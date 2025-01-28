@@ -1,1 +1,1 @@
-qemu-system-x86_64 ingolna.iso
+qemu-system-x86_64 -m 512 ingolna.iso
