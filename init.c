@@ -85,7 +85,7 @@ void setup_jvm() {
         current_path = "";
     }
     char new_path[1024];
-    snprintf(new_path, sizeof(new_path), "%s:%s/bin", current_path, java_home);
+    snprintf(new_path, sizeof(new_path), "%s:%s/bin:/usr/bin", current_path, java_home);
     setenv("PATH", new_path, 1);
 
 }
