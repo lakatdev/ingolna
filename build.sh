@@ -6,6 +6,7 @@ rm -rf rootfs/proc/.keep
 rm -rf rootfs/root/.keep
 rm -rf rootfs/sys/.keep
 rm -rf rootfs/tmp/.keep
+rm -rf rootfs/var/cache/fontconfig/.keep
 
 cd programs
 for i in *.c

@@ -8,3 +8,4 @@ touch rootfs/proc/.keep
 touch rootfs/root/.keep
 touch rootfs/sys/.keep
 touch rootfs/tmp/.keep
+touch rootfs/var/cache/fontconfig/.keep
